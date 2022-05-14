@@ -1,0 +1,16 @@
+<apex:page standardController="Contact" tabStyle="Contact_Creation__tab" extensions="CreateContactController">
+    <apex:Form >
+    <apex:PageMessages ></apex:PageMessages>
+      <apex:PageBlock title="Create Contact">
+          <apex:pageBlockSection >              
+            <apex:inputField value="{!con.FirstName}"/>
+            <apex:inputField value="{!con.LastName}"/>
+            <apex:inputField value="{!con.MobilePhone}"/>
+            <apex:inputField value="{!con.Email}"/>
+          </apex:pageBlockSection>
+          <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save"/>
+          </apex:pageBlockButtons>
+      </apex:PageBlock>
+    </apex:Form>
+</apex:page>

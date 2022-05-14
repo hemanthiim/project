@@ -1,0 +1,27 @@
+<apex:page standardController="Employee__c" >
+<!--<apex:page standardController="Employee__c" extensions="EmployeeErrorMessageController"> -->
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageMessages id="showmsg"></apex:pageMessages>
+            <apex:pageBlockSection title="Employee Details">
+                <apex:inputField label="Name" value="{!Employee__c.Name}" />
+                <apex:inputField label="Date Of Birth" value="{!Employee__c.Date_of_Birth__c}" />
+                <apex:inputField label="Phone" value="{!Employee__c.Phone__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton onclick="validateFunction('{!$Component.Phone}')" action="{!save}" value="Save" rerender="showmsg"/>
+                <!--<apex:commandButton action="{!validate}" value="Validate"/>	-->
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+    </apex:form>
+    <!-- Java script starts Here -->
+      <script>
+       function validateFunction(phone){
+           var inputAmount = document.getElementById(amountinputID).value;
+             if(inputAmount == ''){
+                alert('Please enter amount before submitting price');
+             } 
+      }
+      </script> 
+	<!-- java script ends here --> 
+</apex:page>

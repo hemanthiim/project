@@ -1,0 +1,8 @@
+<apex:page showHeader="false">
+     <apex:pageBlock title="A Block Title">
+        <apex:pageBlockSection title="A Section Title">
+            I'm three components deep!
+            <apex:image id="theImage" value="https://developer.salesforce.com/files/salesforce-developer-network-logo.png" width="220" height="55" alt="Description of image here"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

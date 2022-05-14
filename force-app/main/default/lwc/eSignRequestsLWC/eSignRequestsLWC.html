@@ -1,0 +1,91 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-align_absolute-center slds-text-title_bold">
+        <p class="slds-var-m-vertical_medium content">
+            Page {page} of {totalPage} </p>
+
+    </div>
+    <div class="slds-align_absolute-center">
+        <ul class="slds-button-group-row">
+
+            <template for:each={paginationRange} for:item="pageNumber">
+                <li class="slds-button-group-item" key={pageNumber}>
+                    <button data-target-number={pageNumber}
+                        class="slds-button slds-button_neutral"
+                        onclick={handlePaginationClick}>{pageNumber}</button>
+                </li>
+            </template>
+        </ul>
+    </div>
+    <lightning-record-edit-form object-api-name="eSign_Request__c">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+            aria-label="Example default base table of Opportunities">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Envelop Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Sent to</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Signing Status</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Sent on</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={eSignRecordItems} for:item='item' for:index="indexVar">
+
+                    <tr class="slds-hint-parent" key={item.Id}>
+                        <td>
+                            <lightning-input-field disabled=true field-name="Envelope_name__c"
+                                value={item.Envelope_name__c} variant='label-hidden'>
+                            </lightning-input-field>
+                        </td>
+                        <td>
+                            <lightning-input-field disabled=true field-name="Sent_to__c" value={item.Sent_to__c}
+                                variant='label-hidden'>
+                            </lightning-input-field>
+                        </td>
+                        <td>
+                            <!-- <a>
+                                <lightning-icon data-row-index={index} icon-name={item.icon} size="small"
+                                    onclick={test} title=""></lightning-icon>
+                            </a>
+                            <lightning-output-field value={item.Signing_Status__c}></lightning-output-field>
+                        -->
+                        <template if:true={item.signed}>
+                            <img src={sign} data-name={indexVar} style="max-width: 50%;height: 50%;" onclick={handleSign}/>
+                        </template>
+                        <template if:false={item.signed}>
+                            <img src={notSign} data-name={indexVar} style="max-width: 50%;height: 50%;" onclick={handleSign}/>
+                        </template>
+                       
+                        
+                        
+                        </td>
+                        <td>
+                            <lightning-input-field disabled=true field-name="Sent_on__c" value={item.Sent_on__c}
+                                variant='label-hidden'>
+                            </lightning-input-field>
+                        </td>
+                        <td>
+                            <a >
+                                <lightning-formatted-text value="View Details" onclick={navigateToYoti}>
+                                </lightning-formatted-text>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                </template>
+            </tbody>
+        </table>
+    </lightning-record-edit-form>
+</template>
